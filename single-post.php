@@ -8,7 +8,7 @@
             $statement->setFetchMode(PDO::FETCH_ASSOC);
             $single_post = $statement->fetch();
             
-            $sql2 = "SELECT c.autor,c.text, c.post_id FROM comments AS c INNER JOIN posts as p ON c.post_id = p.id WHERE c.post_id = {$_GET['post_id']}";
+            $sql2 = "SELECT c.author,c.text, c.post_id FROM comments AS c INNER JOIN posts as p ON c.post_id = p.id WHERE c.post_id = {$_GET['post_id']}";
             $statement = $connection->prepare($sql2);
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_ASSOC);
@@ -22,7 +22,7 @@
         
             <div class="blog-post">
                 <a ><h2 class="blog-post-title"><?php echo($single_post['title']);?></h2></a>
-                <p class="blog-post-meta"><?php echo($single_post['created_at']); ?><a href="#"><?php echo($single_post['autor']); ?></a></p>
+                <p class="blog-post-meta"><?php echo($single_post['created_at']); ?><a href="#"><?php echo($single_post['author']); ?></a></p>
                <p><?php echo ($single_post['body']);?></p>
                <hr>
 
@@ -30,7 +30,7 @@
                    <?php 
                    foreach($comments as $coment){
                     ?>
-               <p><?php echo($coment['autor']).": "."'". ($coment['text'])."'";?></p>
+               <p><?php echo($coment['author']).": "."'". ($coment['text'])."'";?></p>
                      <?php }?>
             </div><!-- /.blog-post -->
 

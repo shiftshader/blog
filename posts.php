@@ -1,7 +1,7 @@
 <?php include('dbBlog.php') ?>
 <?php include('header.php') ?>
 <?php
-                $sql = "SELECT id, title, body, autor, created_at FROM posts ORDER BY created_at DESC " ;
+                $sql = "SELECT id, title, body, author, created_at FROM posts ORDER BY created_at DESC " ;
                 $statement = $connection->prepare($sql);
                 $statement->execute();
                 $statement->setFetchMode(PDO::FETCH_ASSOC);
@@ -15,7 +15,7 @@
          ?>
             <div class="blog-post">
                 <a href="single-post.php?post_id=<?php echo$post['id'] ;?>"><h2 class="blog-post-title"><?php echo($post['title']);?></h2></a>
-                <p class="blog-post-meta"><?php echo($post['created_at']); ?><a href="#"><?php echo($post['autor']); ?></a></p>
+                <p class="blog-post-meta"><?php echo($post['created_at']); ?><a href="#"><?php echo($post['author']); ?></a></p>
                <p><?php echo ($post['body']);?></p>
             </div><!-- /.blog-post -->
      
