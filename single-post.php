@@ -22,7 +22,7 @@
         
             <div class="blog-post">
                 <a ><h2 class="blog-post-title"><?php echo($single_post['title']);?></h2></a>
-                <p class="blog-post-meta"><?php echo($single_post['created_at']); ?><a href="#"><?php echo($single_post['author']); ?></a></p>
+                <p class="blog-post-meta"><?php echo($single_post['created_at'])." "; ?><a href="#"><?php echo($single_post['author']); ?></a></p>
                <p><?php echo ($single_post['body']);?></p>
                <hr>
 
