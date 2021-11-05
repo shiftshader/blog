@@ -1,6 +1,18 @@
 <?php
 require("dbBlog.php");
 require("header.php");
+////// author// select
+
+$sql2 = "SELECT id, ime, prezime, pol FROM author" ;
+$statement2 = $connection->prepare($sql2);
+$statement2->execute();
+$statement2->setFetchMode(PDO::FETCH_ASSOC);
+$authors = $statement2->fetchAll();
+
+
+
+
+
 if(isset($_POST['submit'])){
     $body = $_POST["body"];
     $title = $_POST["title"];
@@ -15,11 +27,23 @@ if(isset($_POST['submit'])){
         $statement->execute();
     }
 }
+
+
 ?>
 <div class="container">
 <form action = "create-post.php" method="POST" id="postsForma" >
         <input type="text" name="title" placeholder="Title" id="titlePosts" class="form-control"></input><br>
-        <input type="text" name="author" placeholder="Author" id="authorPosts" class="form-control"></input><br>
+        <select name="author" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+    <option  selected>Choose...</option>
+
+
+        <?php foreach($authors as $autor){
+?>
+
+
+    <option value="<?php echo $autor['ime']." ". $autor['prezime'];?>"><?php echo $autor['ime'] . " " . $autor['prezime'];?></option>
+  <?php } ?>
+  </select><br>
         <textarea name="body" placeholder ="Enter Post" rows = "10" id="bodyPosts" class="form-control"></textarea><br>
         <button name="submit" type="submit" name="submit" class="btn btn-success">Submit</button>
         <br>
