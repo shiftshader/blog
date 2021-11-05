@@ -32,11 +32,12 @@ SELECT * FROM `comments` LIMIT 1000;
 test
 ////////////////////////////////////////////////////////////////
 
-create table 'author' (
-id int auto_increment unique primary key,
+create table author (
+id int auto_increment, 
 ime varchar(65),
 prezime varchar(65),
-pol varchar(10)
+pol varchar(10),
 author_id int,
-FOREIGN KEY (author_id) REFERENCES posts(id)
+primary key(id),
+foreign key (author_id) references posts(id)
 );
