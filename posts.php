@@ -1,5 +1,5 @@
-<?php include('header.php') ?>
 <?php include('dbBlog.php') ?>
+<?php include('header.php') ?>
 <?php
                 $sql = "SELECT id, title, body, autor, created_at FROM posts ORDER BY created_at DESC " ;
                 $statement = $connection->prepare($sql);
@@ -14,9 +14,9 @@
             foreach ($posts as $post) {
          ?>
             <div class="blog-post">
-                <a href="single-post.php"><h2 class="blog-post-title"><?php echo($post['title']) ?></h2></a>
-                <p class="blog-post-meta"><?php echo($post['created_at']) ?><a href="#"><?php echo($post['autor']) ?></a></p>
-               <p><?php echo ($post['body'])?></p>
+                <a href="single-post.php?post_id=<?php echo$post['id'] ;?>"><h2 class="blog-post-title"><?php echo($post['title']);?></h2></a>
+                <p class="blog-post-meta"><?php echo($post['created_at']); ?><a href="#"><?php echo($post['autor']); ?></a></p>
+               <p><?php echo ($post['body']);?></p>
             </div><!-- /.blog-post -->
      
             <nav class="blog-pagination">

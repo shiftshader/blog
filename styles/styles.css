@@ -32,5 +32,6 @@ h5:hover,
 .h5:hover,
 h6:hover,
 .h6:hover {
+  cursor: pointer;
   text-decoration: underline;
 }
