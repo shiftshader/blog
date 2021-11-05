@@ -2,14 +2,13 @@
 <?php include('header.php') ?>
 <?php
         if (isset($_GET['post_id'])) {
-            $sql = "SELECT *FROM posts AS p 
-            WHERE p.id = {$_GET['post_id']}";
+            $sql = "SELECT *FROM posts AS p WHERE p.id = {$_GET['post_id']}";
             $statement = $connection->prepare($sql);
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_ASSOC);
             $single_post = $statement->fetch();
             
-            $sql2 = "SELECT c.autor,c.text, c.post_id FROM comments AS c INNER JOIN posts as p ON c.Post_id = p.id WHERE c.Post_id = {$_GET['post_id']}";
+            $sql2 = "SELECT c.autor,c.text, c.post_id FROM comments AS c INNER JOIN posts as p ON c.post_id = p.id WHERE c.post_id = {$_GET['post_id']}";
             $statement = $connection->prepare($sql2);
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_ASSOC);
@@ -31,7 +30,7 @@
                    <?php 
                    foreach($comments as $coment){
                     ?>
-               <p><?php echo($coment['autor'])." ". ($coment['text']);?></p>
+               <p><?php echo($coment['autor']).": "."'". ($coment['text'])."'";?></p>
                      <?php }?>
             </div><!-- /.blog-post -->
 
