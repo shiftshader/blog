@@ -27,7 +27,7 @@ if(isset($_POST['submit'])){
   
 ?>
 <div class="container">
-<form action = "single-post.php?post_id=<?php echo $_POST['id'] ;?>" method="POST" id="postsForma" >
+<form action = "single-post.php" method="POST" id="postsForma" >
         <input type="text" name="title" placeholder="Title" id="titlePosts" class="form-control"></input><br>        
         <input type="text" name="author" placeholder="author" id="autorPosts" class="form-control"></input><br>        
         <textarea name="body" placeholder ="Enter Post" rows = "10" id="bodyPosts" class="form-control"></textarea><br>
