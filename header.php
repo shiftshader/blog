@@ -27,7 +27,7 @@
             <nav class="nav">
                 <a class="nav-link active" href="posts.php">Home</a>
                 <a class="nav-link" href="create-post.php">Create Post</a>
-                <a class="nav-link" href="#">Press</a>
+                <a class="nav-link" href="create-author.php">Create Author</a>
                 <a class="nav-link" href="#">New hires</a>
                 <a class="nav-link" href="#">About</a>
             </nav>
