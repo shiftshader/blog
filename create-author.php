@@ -6,8 +6,14 @@ if(isset($_POST['submit'])){
     $prezime = $_POST["prezime"];
     $pol = $_POST["pol"];
     if(empty($ime) || empty($prezime) || empty($pol) ){
-         echo('Nesto nije u redu');
-        return;
+      echo "<div class='container'><span style='font-size:2rem;'>Unesite podatke u sva polja</span>
+      <br>
+      <br>
+      <hr>
+      <br>
+      <a href='create-author.php'><button class='btn btn-danger'>Nazad</button><a/>
+      </div>";
+       return;
     }else{
         $sql = "INSERT INTO author (ime,prezime,pol) VALUES ('$ime', '$prezime', '$pol')";
         $statement = $connection->prepare($sql);

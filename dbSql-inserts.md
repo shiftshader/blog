@@ -1,29 +1,29 @@
-DROP DATABASE blog if exist;
+DROP DATABASE IF EXISTS blog;
 CREATE DATABASE blog;
 USE blog;
-create table author (
-id int auto_increment, 
-ime varchar(65),
-prezime varchar(65),
-pol varchar(10),
-primary key(id)
+CREATE TABLE author (
+id INT AUTO_INCREMENT, 
+ime VARCHAR(65),
+prezime VARCHAR(65),
+pol VARCHAR(10),
+PRIMARY KEY(id)
 );
-CREATE TABLE `posts`
+CREATE TABLE posts
 (
 id INT AUTO_INCREMENT,
 title VARCHAR(60),
 body text,
 author VARCHAR(60),
 created_at DATE,
-author_id int,
+author_id INT,
 PRIMARY KEY (id),
 FOREIGN KEY (author_id) REFERENCES author(id)
 );
 
-create table comments(
+CREATE TABLE comments(
 id INT AUTO_INCREMENT,
 author VARCHAR(60),
-text text,
+text TEXT,
 post_id INT,
 author_id INT,
 PRIMARY KEY (id),

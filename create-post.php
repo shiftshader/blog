@@ -24,8 +24,13 @@ if(isset($_POST['submit'])){
 
 
     if(empty($author) || empty($body) || empty($title) ){
-         echo('Nesto nije u redu');
-         var_dump($selected);
+       echo "<div class='container'><span style='font-size:2rem;'>Unesite podatke u sva polja</span>
+       <br>
+       <br>
+       <hr>
+       <br>
+       <a href='create-post.php'><button class='btn btn-dark'>Nazad</button><a/>
+       </div>";
         return;
     }else{
         $sql = "INSERT INTO posts (title,body,author,created_at, author_id) VALUES ('$title', '$body', '$author', '$currentDate','$author_id')";
