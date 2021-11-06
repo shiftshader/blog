@@ -1,8 +1,8 @@
 <?php
     $servername = "127.0.0.1";
-    $username = "academy";
-    $password = "academy";
-    $dbname = "blog";
+    $username = "john";
+    $password = "";
+    $dbname = "blog_yt";
 
     try {
         $connection = new PDO(

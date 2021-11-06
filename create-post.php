@@ -16,15 +16,22 @@ $authors = $statement2->fetchAll();
 if(isset($_POST['submit'])){
     $body = $_POST["body"];
     $title = $_POST["title"];
-    $author = $_POST["author"];
     $currentDate =  date("Y-m-d");
+    $selected=$_POST["author"];
+    $author = preg_replace('/[0-9]+/', '', $selected);
+    $author_id= intval($selected);
+
+
+
     if(empty($author) || empty($body) || empty($title) ){
          echo('Nesto nije u redu');
+         var_dump($selected);
         return;
     }else{
-        $sql = "INSERT INTO posts (title,body,author,created_at) VALUES ('$title', '$body', '$author', '$currentDate')";
+        $sql = "INSERT INTO posts (title,body,author,created_at, author_id) VALUES ('$title', '$body', '$author', '$currentDate','$author_id')";
         $statement = $connection->prepare($sql);
         $statement->execute();
+        header("Location: ./posts.php"); 
     }
 }
 
@@ -41,7 +48,7 @@ if(isset($_POST['submit'])){
 ?>
 
 
-    <option value="<?php echo $autor['ime']." ". $autor['prezime'];?>"><?php echo $autor['ime'] . " " . $autor['prezime'];?></option>
+    <option value="<?php echo $autor['id']." ".$autor['ime'] . " " . $autor['prezime'];?>"><?php echo $autor['ime'] . " " . $autor['prezime'];?></option>
   <?php } ?>
   </select><br>
         <textarea name="body" placeholder ="Enter Post" rows = "10" id="bodyPosts" class="form-control"></textarea><br>
