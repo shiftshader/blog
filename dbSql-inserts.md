@@ -30,3 +30,22 @@ PRIMARY KEY (id),
 FOREIGN KEY (post_id) REFERENCES posts(id),
 FOREIGN KEY (author_id) REFERENCES author(id)
 );
+
+
+
+
+
+
+ ///create 5 users then ////////
+/////// insert comments /////// 
+
+USE blog;
+INSERT INTO `comments` (`author`, `text`, `post_id`, `author_id`)
+ VALUES ('Cune Zdravkovic', 'Dal je moguce', 1,null),
+ ('Pera Peric', 'Dal je moguce', 1,null),
+ ('Dafina Ognjanovic', 'Opet pise lorem', 3,null),
+ ('Boban Stevic', 'Neki Komentar', 3,null),
+ ('Mara Maric', 'WoW', 4,null);
+
+
+

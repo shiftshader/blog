@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
     $selected=$_POST["author"];
     $author = preg_replace('/[0-9]+/', '', $selected);
     $author_id= intval($selected);
-
+    
 
 
     if(empty($author) || empty($body) || empty($title) ){
@@ -29,14 +29,14 @@ if(isset($_POST['submit'])){
        <br>
        <hr>
        <br>
-       <a href='create-post.php'><button class='btn btn-dark'>Nazad</button><a/>
+       <a href='create'><button class='btn btn-dark'>Nazad</button><a/>
        </div>";
         return;
     }else{
         $sql = "INSERT INTO posts (title,body,author,created_at, author_id) VALUES ('$title', '$body', '$author', '$currentDate','$author_id')";
         $statement = $connection->prepare($sql);
         $statement->execute();
-        header("Location: ./posts.php"); 
+        header("Location: ./create-post.php"); 
     }
 }
 
@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
 <form action = "create-post.php" method="POST" id="postsForma" >
         <input type="text" name="title" placeholder="Title" id="titlePosts" class="form-control"></input><br>
         <select name="author" class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-    <option  selected>Choose...</option>
+    <option value=''>Choose...</option>
 
 
         <?php foreach($authors as $autor){
