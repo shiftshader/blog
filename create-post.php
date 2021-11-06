@@ -3,7 +3,7 @@ require("dbBlog.php");
 require("header.php");
 ////// author// select
 
-$sql2 = "SELECT id, ime, prezime, pol FROM author" ;
+$sql2 = "SELECT id, ime, prezime, pol FROM author";
 $statement2 = $connection->prepare($sql2);
 $statement2->execute();
 $statement2->setFetchMode(PDO::FETCH_ASSOC);

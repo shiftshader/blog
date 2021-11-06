@@ -2,7 +2,7 @@
 <?php include('header.php') ?>
 <?php
         if (isset($_GET['post_id'])) {
-            $sql = "SELECT *FROM posts AS p WHERE p.id = {$_GET['post_id']}";
+            $sql = "select a.pol, p.id, p.title, p.body, p.author, p.created_at, p.author_id from posts as p left join author as a on p.author_id=a.id where p.id = {$_GET['post_id']}";
             $statement = $connection->prepare($sql);
             $statement->execute();
             $statement->setFetchMode(PDO::FETCH_ASSOC);
@@ -22,7 +22,21 @@
         
             <div class="blog-post">
                 <a ><h2 class="blog-post-title"><?php echo($single_post['title']);?></h2></a>
-                <p class="blog-post-meta"><?php echo($single_post['created_at'])." "; ?><a href="#"><?php echo($single_post['author']); ?></a></p>
+                <p class="blog-post-meta"><?php echo($single_post['created_at'])." "; ?><a <?php 
+                 $switch=$single_post['pol'];
+
+                 switch($switch){
+                     case "muski":
+                         echo 'style="color:blue"';
+                         break;
+                     case "zenski":
+                         echo 'style="color:purple"';
+                         break;
+                 }
+                
+                
+                
+                ?> href="#"><?php echo($single_post['author']); ?></a></p>
                <p><?php echo ($single_post['body']);?></p>
                <hr>
 

@@ -1,4 +1,4 @@
-DROP DATABASE blog;
+DROP DATABASE blog if exist;
 CREATE DATABASE blog;
 USE blog;
 create table author (
