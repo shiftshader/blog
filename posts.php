@@ -1,8 +1,8 @@
 <?php include('dbBlog.php') ?>
 <?php include('header.php') ?>
 <?php
-                $sql = "SELECT * FROM author 
-                LEFT JOIN posts ON author.id = posts.author_id ORDER BY created_at DESC " ;
+                $sql = "SELECT p.id, p.title, p.body, p.author, p.created_at, p.author_id, author.pol FROM posts  as p
+                LEFT JOIN author ON p.author_id=author.id ORDER BY created_at DESC;";
                 $statement = $connection->prepare($sql);
                 $statement->execute();
                 $statement->setFetchMode(PDO::FETCH_ASSOC);

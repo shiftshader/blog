@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
         $sql = "INSERT INTO posts (title,body,author,created_at, author_id) VALUES ('$title', '$body', '$author', '$currentDate','$author_id')";
         $statement = $connection->prepare($sql);
         $statement->execute();
-        header("Location: ./create-post.php"); 
+        header("Location: ./index.php"); 
     }
 }
 
